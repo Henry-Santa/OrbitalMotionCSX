@@ -17,3 +17,7 @@ Orbital Motion Project
 
 ### Cube Law
 - ![Cube Law](graphics/cube_law.png "Cube Law")
+
+### Collision Game
+- ![Collision Game](graphics/collision_game.png "Collision Game")
+- Working collisions, many options at top of file for different simulations. Collisions are very rare, radius of planet is much smaller than displayed radius so the planets can be seen.
