@@ -14,3 +14,6 @@ Orbital Motion Project
 
 ### Area Calculation
 - ![Area Calculation](graphics/area.png "Area Calculation")
+
+### Cube Law
+- ![Cube Law](graphics/cube_law.png "Cube Law")
