@@ -18,7 +18,7 @@ PLANETS = [
 MOON = StellarObject(7.342E22, [PLANETS[2].position[0] + 384400000, 0], [0, 29780 + 1022], "MOON")  # Moon's initial position and velocity relative to Earth
 PLANETS.append(MOON)
 
-DT = 60 * 5  # 1 hour 
+DT = 60 * 5  # Time step in seconds (5 minutes)
 STEPS = 365 * 24 * 12  # 1 year
 
 # Initialize data storage for plotting
