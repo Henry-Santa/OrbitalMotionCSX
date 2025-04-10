@@ -1,4 +1,3 @@
-import math
 import util
 
 G = 6.67430E-11
