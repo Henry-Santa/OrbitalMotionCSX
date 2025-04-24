@@ -1,5 +1,7 @@
 import math
 
+def zeroVec(length):
+    return [0.0] * length
 def normalizeVec(vec):
     magnitude = math.sqrt(sum([item ** 2 for item in vec]))
     return [item / magnitude for item in vec]

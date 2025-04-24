@@ -10,8 +10,8 @@ class StellarObject:
         self.pastPositions = [position]
         self.velocity = velocity
         self.pastVelocities = [velocity]
-        self.acceleration = [0, 0]
-        self.force = [0, 0]
+        self.acceleration = util.zeroVec(len(position))
+        self.force = util.zeroVec(len(position))
     
     def step(self, dt, objects : list):
         for obj in objects:
@@ -22,7 +22,7 @@ class StellarObject:
         self.position = util.addVec(self.position, util.multiplyVec(self.velocity, dt))
         self.pastPositions.append(self.position)
         self.pastVelocities.append(self.velocity)
-        self.force = [0, 0]
+        self.force = util.zeroVec(len(self.position))
 
     def calculate_force(self, obj : 'StellarObject'):
         distance = util.calcDistance(self.position, obj.position)
