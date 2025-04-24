@@ -31,13 +31,36 @@ class ThreeDGrapher:
         glPushMatrix()
         x, y, z = stellarObject.position
         glTranslatef(x, y, z)
-        glColor3fv(colorMap[color])
-        gluSphere(gluNewQuadric(), radius, 32, 32)
+        c = colorMap[color]
+        mat_ambient = [c[0]*0.3, c[1]*0.3, c[2]*0.3, 1.0]
+        mat_diffuse = [c[0],    c[1],    c[2],    1.0]
+        glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient)
+        glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse)
+        quad = gluNewQuadric()
+        gluQuadricDrawStyle(quad, GLU_FILL)
+        gluQuadricNormals(quad, GLU_SMOOTH)
+        gluSphere(quad, radius, 32, 32)
+        gluDeleteQuadric(quad)
         glPopMatrix()
 
     def plot_bodies(self):
         for i, stellarObject in enumerate(self.stellarObjects):
             self.plot_body(stellarObject, trail=self.trails, color=self.colors[i], glow=self.glows[i])
+
+    def plot_axises(self):
+        glDisable(GL_LIGHTING)
+        glBegin(GL_LINES)
+        glColor3fv(colorMap['red'])
+        glVertex3f(1e13, 0, 0)
+        glVertex3f(-1e13, 0, 0)
+        glColor3fv(colorMap['green'])
+        glVertex3f(0, 1e13, 0)
+        glVertex3f(0, -1e13, 0)
+        glColor3fv(colorMap['blue'])
+        glVertex3f(0, 0, 1e13)
+        glVertex3f(0, 0, -1e13)
+        glEnd()
+        glEnable(GL_LIGHTING)
 
     def step_system(self):
         for stellarObject in self.stellarObjects:
@@ -51,10 +74,23 @@ class ThreeDGrapher:
         glMatrixMode(GL_MODELVIEW)
         glEnable(GL_DEPTH_TEST)
 
+
+        glEnable(GL_LIGHTING)
+        glEnable(GL_LIGHT0)
+        glEnable(GL_NORMALIZE)
+
+
+        ambient = [0.2, 0.2, 0.2, 1.0]
+        diffuse = [0.8, 0.8, 0.8, 1.0]
+        position = [1.0, 1.0, 1.0, 0.0] 
+        glLightfv(GL_LIGHT0, GL_AMBIENT, ambient)
+        glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse)
+        glLightfv(GL_LIGHT0, GL_POSITION, position)
+
     def start(self):
         glutInit()
         glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH)
-        glutInitWindowSize(800, 600)
+        glutInitWindowSize(1600, 1200)
         glutCreateWindow(b"3D Astronomical Scale")
         self.init_gl()
         self.camera_controls()
@@ -107,6 +143,7 @@ class ThreeDGrapher:
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
         self.update_camera()
         self.plot_bodies()
+        self.plot_axises()
         glutSwapBuffers()
 
 
