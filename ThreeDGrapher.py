@@ -136,8 +136,6 @@ class ThreeDGrapher:
 
         self.update_camera = update_camera
 
-        
-
     def animate(self):
         self.step_system()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
@@ -145,6 +143,7 @@ class ThreeDGrapher:
         self.plot_bodies()
         self.plot_axises()
         glutSwapBuffers()
+
 
 
 def change_orbit_plane(stellarObject):

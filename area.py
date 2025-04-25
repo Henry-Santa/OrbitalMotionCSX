@@ -5,7 +5,6 @@ import util
 HOST = StellarObject(1.989E30, [0, 0], [0,0], "SUN")
 # Set initial position at periapsis and a high velocity for high eccentricity
 SATELITE = StellarObject(5.972E24, [75E9, 0], [0, 50000], "EARTH")  # High initial velocity
-#SATELITE = StellarObject(5.972E24, [148.17E9, 0], [0, 29780], "EARTH")  # Correct initial velocity
 DT = 60 * 60  # 1 hour
 ITERSFORSWAP = 24*5*2*2
 TOTALITERS = 24*320

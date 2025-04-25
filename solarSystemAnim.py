@@ -29,7 +29,7 @@ plt.gca().set_aspect('equal', adjustable='datalim')
 plt.gca().set_navigate(True)
 # Simulation loop
 def animate(i):
-    for i in range(100):
+    for i in range(400):
         for planet in PLANETS:
             planet.step(DT, [HOST] + PLANETS)
             positions[planet.name][0].append(planet.position[0])

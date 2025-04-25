@@ -6,18 +6,12 @@ import util
 HOST = StellarObject(1.989E30, [0, 0], [0,0], "SUN")
 # Set initial position at periapsis and a high velocity for high eccentricity
 SATELITE = StellarObject(5.972E24, [75E9, 0], [0, 50000], "EARTH")  # High initial velocity
-#SATELITE = StellarObject(5.972E24, [148.17E9, 0], [0, 29780], "EARTH")  # Correct initial velocity
 DT = 60 * 60  # 1 hour
-TOTALITERS = 24*365
-areas = []
-positionSets = []
-area = 0
 curr = 0
 
 while SATELITE.position[1] >= 0:
     curr += 1
     SATELITE.step(DT, [HOST])
-
 
 for i in range(curr):
     SATELITE.step(DT, [HOST])
