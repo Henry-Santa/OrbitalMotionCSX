@@ -21,3 +21,7 @@ Orbital Motion Project
 ### Collision Game
 - ![Collision Game](graphics/collision_game.png "Collision Game")
 - Working collisions, many options at top of file for different simulations. Collisions are very rare, radius of planet is much smaller than displayed radius so the planets can be seen.
+
+### Collision Game
+- ![ThreeD](graphics/threeD.png "Three D Graphics")
+- Threed graphics using opengl and Pyopengl. Use QAWS to rotate around the sun and scroll wheel to zoom in and out
